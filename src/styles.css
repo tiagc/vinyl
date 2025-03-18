@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Geist Mono", monospace;
+  }
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url(typefaces/statics-woff/GeistMono-Regular.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .custom-padding {
+    padding-left: max((100% - 71.25rem) / 2, 4rem);
+    padding-right: max((100% - 71.25rem) / 2, 4rem);
+  }
+}
