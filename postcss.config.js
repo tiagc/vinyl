@@ -1,8 +1,6 @@
-// tailwind.config.js
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
-  theme: {
-    extend: {},
+  plugins: {
+    "@tailwindcss/postcss": {}, // Use the new PostCSS plugin package
+    autoprefixer: {}, // Add vendor prefixes to CSS rules
   },
-  plugins: [require("tailwindcss"), require("autoprefixer")],
 };
