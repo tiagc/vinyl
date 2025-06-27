@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily: {
         neue: ['"Helvetica Neue"', "Arial", "sans-serif"],
-        geist: ['"Geist Mono"', "monospace"],
+        geist: ['"Geist"', "sans-serif"],
+        mono: ['"Geist Mono"', "monospace"],
         pinyon: ["Pinyon Script", "cursive"],
       },
     },
