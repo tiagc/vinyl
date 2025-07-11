@@ -1,30 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 
 const artists = [
-  "Kilo Kish",
-  "Hypnostic",
-  "Big Red Machine",
-  "Mk.gee",
-  "Groove is in the",
-  "Deee-Lite",
-  "Lose it",
-  "SWMRS",
-  "Fishmans",
-  "Venq Tolep",
-  "Robag Wruhme",
-  "Frank Ocean",
-  "Charcoal Baby",
-  "Blood Orange",
-  "Chemistry",
-  "Hooky",
-  "Archy Marshall",
-  "Sessa",
-  "Radiohead",
-  "Memory of 95",
-  "Earth Boys",
-  "Toro y Moi",
+  { name: "Kilo Kish", img: "" },
+  { name: "Hypnostic", img: "" },
+  { name: "Big Red Machine", img: "" },
+  { name: "Mk.gee", img: "" },
+  { name: "Groove is in the", img: "" },
+  { name: "Deee-Lite", img: "" },
+  { name: "Lose it", img: "" },
+  { name: "SWMRS", img: "" },
+  { name: "Fishmans", img: "" },
+  { name: "Venq Tolep", img: "" },
+  { name: "Robag Wruhme", img: "" },
+  { name: "Frank Ocean", img: "" },
+  { name: "Charcoal Baby", img: "" },
+  { name: "Blood Orange", img: "" },
+  { name: "Chemistry", img: "" },
+  { name: "Hooky", img: "" },
+  { name: "Archy Marshall", img: "" },
+  { name: "Sessa", img: "" },
+  { name: "Radiohead", img: "" },
+  { name: "Memory of 95", img: "" },
+  { name: "Earth Boys", img: "" },
+  { name: "Toro y Moi", img: "" },
 ];
-
 function Playlist() {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -80,7 +79,7 @@ function Playlist() {
                 ? "text-purple-500 scale-110"
                 : "text-yellow-400"
             }`}>
-            {artist}
+            {artist.name}
           </div>
         ))}
       </main>
