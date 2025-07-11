@@ -12,9 +12,9 @@ function Player() {
   ];
 
   return (
-    <div className="gap-4 p-4">
+    <div className="flex flex-col gap-2 p-4 items-left">
       {artists.map((artist) => (
-        <div key={artist} className="text-white text-4xl py-2">
+        <div key={artist} className="text-white text-5xl">
           {artist}
         </div>
       ))}
