@@ -9,15 +9,20 @@ const artists = [
   "Deee-Lite",
   "Lose it",
   "SWMRS",
+  "Fishmans",
   "Venq Tolep",
   "Robag Wruhme",
   "Frank Ocean",
   "Charcoal Baby",
   "Blood Orange",
   "Chemistry",
-  "Jennifer Touch",
+  "Hooky",
+  "Archy Marshall",
+  "Sessa",
+  "Radiohead",
   "Memory of 95",
   "Earth Boys",
+  "Toro y Moi",
 ];
 
 function Playlist() {
