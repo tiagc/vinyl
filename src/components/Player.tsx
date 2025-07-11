@@ -1,25 +1,26 @@
-import { LucideFastForward, LucideRewind } from "lucide-react";
 import "../styles.css";
+import PauseIcon from "./buttons/PauseIcon";
+import RewindIcon from "./buttons/RewindIcon";
 
 export default function Player() {
   return (
     <footer className="fixed bottom-0 z-50 bg-black w-full pb-safe">
-      <div className="flex justify-between p-4 items-center">
+      <div className="flex justify-between p-6 items-center">
         <div>
           <button>
-            <LucideRewind className="text-white" />
+            <RewindIcon className="text-white size-5" />
           </button>
         </div>
 
         <div>
           <button>
-            <span className="text-white">pause</span>
+            <PauseIcon className="text-white size-5" />
           </button>
         </div>
 
         <div>
           <button>
-            <LucideFastForward className="text-white" />
+            <RewindIcon className="text-white size-5 scale-x-[-1]" />
           </button>
         </div>
       </div>
