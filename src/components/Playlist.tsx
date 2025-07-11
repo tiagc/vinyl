@@ -60,8 +60,8 @@ function Playlist() {
             key={index}
             className={`snap-center py-4 text-3xl whitespace-pre-line transition-all duration-200 ${
               index === currentIndex
-                ? "text-purple-500 scale-110 font-bold"
-                : "text-yellow-400 opacity-80"
+                ? "text-purple-500 scale-110"
+                : "text-yellow-400"
             }`}>
             {artist}
           </div>
