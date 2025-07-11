@@ -1,4 +1,3 @@
-import KLMLogo from "./KLMLogo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const tabs = [{ name: "System" }, { name: "Light" }, { name: "Dark" }];
@@ -10,9 +9,7 @@ function Header() {
         <nav>
           <div className="flex justify-between items-center">
             <div className="flex gap-1 items-center">
-              <a href="#">
-                <KLMLogo className="size-7 text-black" />
-              </a>
+              <a href="#"></a>
               <h1 className="text-4xl tracking-tight text-black">klm</h1>
             </div>
             <ThemeToggle />

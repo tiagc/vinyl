@@ -1,29 +1,27 @@
-import { LucideLoader, Unlock } from "lucide-react";
+import { LucideFastForward, LucideRewind } from "lucide-react";
 
-function Player() {
+export default function Footer() {
   return (
-    <div>
-      <div className="px-4 pb-4">
-        <h1 className="text-3xl font-medium tracking-tighter">
-          Konfiguration Läutmaschine
-        </h1>
+    <footer className="fixed bottom-0 w-full">
+      <div className="flex justify-between p-4">
+        <div>
+          <button>
+            <LucideRewind className="text-white" />
+          </button>
+        </div>
+
+        <div>
+          <button>
+            <span className="text-white">pause</span>
+          </button>
+        </div>
+
+        <div>
+          <button>
+            <LucideFastForward className="text-white" />
+          </button>
+        </div>
       </div>
-      <section className="flex justify-between px-4">
-        <button
-          type="button"
-          className="flex flex-col w-40 aspect-square gap-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-left text-emerald-900">
-          <div className="flex w-full items-center justify-between gap-2">
-            <LucideLoader className="size-6 animate-spin text-emerald-600" />
-            <Unlock className="size-6 text-emerald-600" />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold tracking-tight">Glocke 1</h2>
-            <p className="text-sm font-medium text-emerald-950">LM5 • #17</p>
-          </div>
-        </button>
-      </section>
-    </div>
+    </footer>
   );
 }
-
-export default Player;
