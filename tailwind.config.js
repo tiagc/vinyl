@@ -9,9 +9,6 @@ module.exports = {
         mono: ['"Geist Mono"', "monospace"],
         pinyon: ["Pinyon Script", "cursive"],
       },
-      spacing: {
-        "safe-bottom": "env(safe-area-inset-bottom)",
-      },
     },
   },
   plugins: [],

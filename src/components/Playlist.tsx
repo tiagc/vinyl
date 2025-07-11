@@ -50,7 +50,7 @@ function Playlist() {
   }, []);
 
   return (
-    <div className="relative h-screen text-yellow-400 font-mono">
+    <div className="relative h-screen font-mono">
       <main
         ref={containerRef}
         className="h-full overflow-y-scroll snap-y snap-mandatory flex flex-col items-center scrollbar-hide px-4"
@@ -61,7 +61,7 @@ function Playlist() {
             className={`snap-center py-4 text-3xl whitespace-pre-line transition-all duration-200 ${
               index === currentIndex
                 ? "text-purple-500 scale-110 font-bold"
-                : "text-white opacity-40"
+                : "text-yellow-400 opacity-80"
             }`}>
             {artist}
           </div>
