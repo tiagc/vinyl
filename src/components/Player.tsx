@@ -1,9 +1,9 @@
 import { LucideFastForward, LucideRewind } from "lucide-react";
 
-export default function Footer() {
+export default function Player() {
   return (
-    <footer className="fixed bottom-0 w-full">
-      <div className="flex justify-between p-4">
+    <footer className="fixed bottom-0 z-50 bg-black pb-safe-bottom w-full">
+      <div className="flex justify-between p-4 items-center">
         <div>
           <button>
             <LucideRewind className="text-white" />

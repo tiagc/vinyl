@@ -1,13 +1,11 @@
-import Main from "./components/Main";
 import Player from "./components/Player";
+import Playlist from "./components/Playlist";
 
 function App() {
   return (
     <div>
-      <Main />
-      <section className="min-h-screen bot-0 justify-end">
-        <Player />
-      </section>
+      <Playlist />
+      <Player />
     </div>
   );
 }

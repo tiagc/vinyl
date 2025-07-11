@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -8,6 +8,9 @@ module.exports = {
         geist: ['"Geist"', "sans-serif"],
         mono: ['"Geist Mono"', "monospace"],
         pinyon: ["Pinyon Script", "cursive"],
+      },
+      spacing: {
+        "safe-bottom": "env(safe-area-inset-bottom)",
       },
     },
   },
