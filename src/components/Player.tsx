@@ -8,19 +8,19 @@ export default function Player() {
       <div className="flex justify-between p-6 items-center">
         <div>
           <button>
-            <RewindIcon className="text-white size-5" />
+            <RewindIcon className="text-white text-orange-500 size-8" />
           </button>
         </div>
 
         <div>
           <button>
-            <PauseIcon className="text-white size-5" />
+            <PauseIcon className="text-white text-orange-500 size-8" />
           </button>
         </div>
 
         <div>
           <button>
-            <RewindIcon className="text-white size-5 scale-x-[-1]" />
+            <RewindIcon className="text-white text-orange-500 size-8 scale-x-[-1]" />
           </button>
         </div>
       </div>

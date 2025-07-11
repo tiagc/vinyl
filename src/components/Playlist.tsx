@@ -1,31 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 
-function Playlist() {
-  const artists = [
-    "Kilo Kish",
-    "Hypnostic",
-    "Big Red Machine",
-    "Groove is in the",
-    "Deee-Lite",
-    "Lose it",
-    "SWMRS",
-    "Venq Tolep",
-    "Robag Wruhme",
-    "Frank Ocean",
-    "Charcoal Baby",
-    "Blood Orange",
-    "Chemistry",
-    "Jennifer Touch",
-    "Memory of 95",
-    "Earth Boys",
-  ];
+const artists = [
+  "Kilo Kish",
+  "Hypnostic",
+  "Big Red Machine",
+  "Mk.gee",
+  "Groove is in the",
+  "Deee-Lite",
+  "Lose it",
+  "SWMRS",
+  "Venq Tolep",
+  "Robag Wruhme",
+  "Frank Ocean",
+  "Charcoal Baby",
+  "Blood Orange",
+  "Chemistry",
+  "Jennifer Touch",
+  "Memory of 95",
+  "Earth Boys",
+];
 
+function Playlist() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // scroll to middle artist on load
+    const middleIndex = Math.floor(artists.length / 2);
+    const middleItem = itemRefs.current[middleIndex];
+    if (middleItem) {
+      middleItem.scrollIntoView({ behavior: "auto", block: "center" });
+    }
 
     const handleScroll = () => {
       const children = Array.from(container.children);
@@ -50,15 +59,18 @@ function Playlist() {
   }, []);
 
   return (
-    <div className="relative h-screen font-mono">
+    <div className="relative h-screen">
       <main
         ref={containerRef}
-        className="h-full overflow-y-scroll snap-y snap-mandatory flex flex-col items-center scrollbar-hide px-4"
-        style={{ scrollBehavior: "smooth", paddingBottom: "80px" }}>
+        className="h-full overflow-y-scroll snap-y snap-mandatory flex flex-col items-start scrollbar-hide px-6 pt-[50vh] pb-[50vh]"
+        style={{ scrollBehavior: "smooth" }}>
         {artists.map((artist, index) => (
           <div
+            ref={(el) => {
+              itemRefs.current[index] = el;
+            }}
             key={index}
-            className={`snap-center py-4 text-3xl whitespace-pre-line transition-all duration-200 ${
+            className={`snap-center py-4 text-4xl tracking-tight transition-all duration-200 ${
               index === currentIndex
                 ? "text-purple-500 scale-110"
                 : "text-yellow-400"
