@@ -1,4 +1,4 @@
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "./buttons/ThemeToggle";
 
 const tabs = [{ name: "System" }, { name: "Light" }, { name: "Dark" }];
 
