@@ -2,28 +2,28 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const artists = [
-  { name: "Kilo Kish", img: "" },
-  { name: "Hypnostic", img: "" },
-  { name: "Big Red Machine", img: "" },
-  { name: "Mk.gee", img: "" },
-  { name: "Groove is in the", img: "" },
-  { name: "Deee-Lite", img: "" },
-  { name: "Lose it", img: "" },
-  { name: "SWMRS", img: "" },
-  { name: "Fishmans", img: "" },
-  { name: "Venq Tolep", img: "" },
-  { name: "Robag Wruhme", img: "" },
-  { name: "Frank Ocean", img: "/blond_cover.jpeg" },
-  { name: "Charcoal Baby", img: "" },
-  { name: "Blood Orange", img: "" },
-  { name: "Chemistry", img: "" },
-  { name: "Hooky", img: "" },
-  { name: "Archy Marshall", img: "" },
-  { name: "Sessa", img: "" },
-  { name: "Radiohead", img: "" },
-  { name: "Memory of 95", img: "" },
-  { name: "Earth Boys", img: "" },
-  { name: "Toro y Moi", img: "" },
+  { name: "Kilo Kish", title: "", img: "" },
+  { name: "Hypnostic", title: "", img: "" },
+  { name: "Big Red Machine", title: "", img: "" },
+  { name: "Mk.gee", title: "", img: "" },
+  { name: "Groove is in the", title: "", img: "" },
+  { name: "Deee-Lite", title: "", img: "" },
+  { name: "Lose it", title: "", img: "" },
+  { name: "SWMRS", title: "", img: "" },
+  { name: "Fishmans", title: "ナイトクルージング", img: "" },
+  { name: "Venq Tolep", title: "", img: "" },
+  { name: "Robag Wruhme", title: "", img: "" },
+  { name: "Frank Ocean", title: "blond", img: "/blond_cover.jpeg" },
+  { name: "Charcoal Baby", title: "", img: "" },
+  { name: "Blood Orange", title: "", img: "" },
+  { name: "Chemistry", title: "", img: "" },
+  { name: "Hooky", title: "", img: "" },
+  { name: "Archy Marshall", title: "", img: "" },
+  { name: "Sessa", title: "", img: "" },
+  { name: "Radiohead", title: "", img: "" },
+  { name: "Memory of 95", title: "", img: "" },
+  { name: "Earth Boys", title: "", img: "" },
+  { name: "Toro y Moi", title: "", img: "" },
 ];
 
 function Playlist() {
@@ -102,7 +102,7 @@ function Playlist() {
                       initial={{ x: -40, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: -40, opacity: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.3 }}
                       className="w-24 h-24 grayscale object-cover pointer-events-auto"
                     />
                   )}
@@ -136,9 +136,9 @@ function Playlist() {
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -10, opacity: 0 }}
-                        transition={{ duration: 0.3, delay: 0.2 }}
+                        transition={{ duration: 0.2, delay: 0.2 }}
                         className="text-gray-400 text-base mt-1">
-                        Blond
+                        {artist.title}
                       </motion.div>
                     )}
                   </AnimatePresence>

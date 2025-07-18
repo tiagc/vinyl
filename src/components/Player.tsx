@@ -4,7 +4,7 @@ import RewindIcon from "./buttons/RewindIcon";
 
 export default function Player() {
   return (
-    <footer className="fixed bottom-0 z-50 w-full pb-safe">
+    <footer className="fixed custom-padding bottom-0 z-50 w-full pb-safe">
       <div className="flex justify-between p-6 items-center">
         <div>
           <button>

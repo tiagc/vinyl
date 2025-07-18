@@ -4,7 +4,7 @@
 
 /* * {
   outline: 1px solid red;
-  } */
+} */
 
 @layer base {
   body {
@@ -28,8 +28,8 @@
 
 @media (min-width: 768px) {
   .custom-padding {
-    padding-left: max((100% - 71.25rem) / 2, 4rem);
-    padding-right: max((100% - 71.25rem) / 2, 4rem);
+    padding-left: max((100% - 40rem) / 2, 2rem);
+    padding-right: max((100% - 40rem) / 2, 2rem);
   }
 }
 

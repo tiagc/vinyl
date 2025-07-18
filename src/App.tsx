@@ -3,10 +3,12 @@ import Playlist from "./components/Playlist";
 
 function App() {
   return (
-    <div>
-      <Playlist />
+    <>
+      <div className="custom-padding">
+        <Playlist />
+      </div>
       <Player />
-    </div>
+    </>
   );
 }
 
