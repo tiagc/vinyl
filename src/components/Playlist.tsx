@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const artists = [
@@ -13,7 +13,7 @@ const artists = [
   { name: "Fishmans", img: "" },
   { name: "Venq Tolep", img: "" },
   { name: "Robag Wruhme", img: "" },
-  { name: "Frank Ocean", img: "" },
+  { name: "Frank Ocean", img: "/blond_cover.jpeg" },
   { name: "Charcoal Baby", img: "" },
   { name: "Blood Orange", img: "" },
   { name: "Chemistry", img: "" },
@@ -25,6 +25,7 @@ const artists = [
   { name: "Earth Boys", img: "" },
   { name: "Toro y Moi", img: "" },
 ];
+
 function Playlist() {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -53,6 +54,7 @@ function Playlist() {
 
       const closestIndex = distances.indexOf(Math.min(...distances));
       setCurrentIndex(closestIndex);
+      // Do not update clickedIndex here
     };
 
     container.addEventListener("scroll", handleScroll, { passive: true });
@@ -64,7 +66,9 @@ function Playlist() {
   }, []);
 
   const handleClick = (index: number) => {
-    setClickedIndex(index === clickedIndex ? null : index); // toggle
+    if (index === currentIndex) {
+      setClickedIndex(clickedIndex === index ? null : index);
+    }
   };
 
   return (
@@ -73,33 +77,76 @@ function Playlist() {
         ref={containerRef}
         className="h-full overflow-y-scroll snap-y snap-mandatory flex flex-col items-start scrollbar-hide px-6 pt-[50vh] pb-[50vh]"
         style={{ scrollBehavior: "smooth" }}>
-        {artists.map((artist, index) => (
-          <motion.div
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
-            key={index}
-            onClick={() => {
-              if (index === currentIndex) handleClick(index);
-            }}
-            className={`snap-center py-4 text-3xl tracking-tight select-none ${
-              index === currentIndex
-                ? "text-white scale-110 cursor-pointer"
-                : "text-gray-400 scale-100 cursor-default"
-            }`}
-            animate={{
-              x: clickedIndex === index ? 60 : 0,
-              scale: index === currentIndex ? 1.1 : 1,
-              color: index === currentIndex ? "#fff" : "#9ca3af",
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30,
-            }}>
-            {artist.name}
-          </motion.div>
-        ))}
+        {artists.map((artist, index) => {
+          const isActive = index === currentIndex;
+          const isClicked = clickedIndex === index;
+          const showDetail = isActive && isClicked;
+
+          return (
+            <div
+              key={index}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
+              onClick={() => {
+                if (isActive) handleClick(index);
+              }}
+              className="relative snap-center w-full py-4 pr-4 flex items-start justify-start">
+              {/* Reserve fixed space for detail to avoid height jump */}
+              <div className="absolute left-0 top-0 h-24 w-36 flex items-center gap-4 pointer-events-none">
+                <AnimatePresence mode="wait">
+                  {showDetail && (
+                    <motion.img
+                      src={artist.img}
+                      alt={artist.name}
+                      initial={{ x: -40, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -40, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="w-24 h-24 grayscale object-cover pointer-events-auto"
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <motion.div
+                layout
+                animate={{
+                  x: showDetail ? 115 : 0,
+                  scale: isActive ? 1.1 : 1,
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeInOut",
+                }}
+                className="flex flex-col z-10">
+                <div
+                  className={`text-3xl tracking-tight select-none ${
+                    isActive ? "text-white" : "text-gray-400"
+                  } ${isActive ? "cursor-pointer" : "cursor-default"}`}>
+                  {artist.name}
+                </div>
+
+                {/* Reserve space for subtitle, so height doesn't jump */}
+                <div className="h-6">
+                  <AnimatePresence>
+                    {showDetail && (
+                      <motion.div
+                        key="subtitle"
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -10, opacity: 0 }}
+                        transition={{ duration: 0.3, delay: 0.2 }}
+                        className="text-gray-400 text-base mt-1">
+                        Blond
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
       </main>
     </div>
   );
