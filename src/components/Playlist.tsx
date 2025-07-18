@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const artists = [
@@ -28,12 +29,12 @@ function Playlist() {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // scroll to middle artist on load
     const middleIndex = Math.floor(artists.length / 2);
     const middleItem = itemRefs.current[middleIndex];
     if (middleItem) {
@@ -62,6 +63,10 @@ function Playlist() {
     };
   }, []);
 
+  const handleClick = (index: number) => {
+    setClickedIndex(index === clickedIndex ? null : index); // toggle
+  };
+
   return (
     <div className="relative h-screen">
       <main
@@ -69,18 +74,31 @@ function Playlist() {
         className="h-full overflow-y-scroll snap-y snap-mandatory flex flex-col items-start scrollbar-hide px-6 pt-[50vh] pb-[50vh]"
         style={{ scrollBehavior: "smooth" }}>
         {artists.map((artist, index) => (
-          <div
+          <motion.div
             ref={(el) => {
               itemRefs.current[index] = el;
             }}
             key={index}
-            className={`snap-center py-4 text-4xl tracking-tight transition-all duration-200 ${
+            onClick={() => {
+              if (index === currentIndex) handleClick(index);
+            }}
+            className={`snap-center py-4 text-3xl tracking-tight select-none ${
               index === currentIndex
-                ? "text-purple-500 scale-110"
-                : "text-yellow-400"
-            }`}>
+                ? "text-white scale-110 cursor-pointer"
+                : "text-gray-400 scale-100 cursor-default"
+            }`}
+            animate={{
+              x: clickedIndex === index ? 60 : 0,
+              scale: index === currentIndex ? 1.1 : 1,
+              color: index === currentIndex ? "#fff" : "#9ca3af",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+            }}>
             {artist.name}
-          </div>
+          </motion.div>
         ))}
       </main>
     </div>
